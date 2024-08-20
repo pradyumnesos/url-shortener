@@ -14,7 +14,11 @@ async function handleGenerateNewShortURL(req,res){
     visitHistory:[],
   });
   const urls = await URL.find({});
-  return res.render("home",{id: shortID,urls});
+  const protocol = req.protocol;
+  const host = req.hostname;
+  const Url = req.originalUrl;
+  const port = process.env.PORT
+  return res.render("home",{id: shortID,urls,protocol,host,port});
 
 }
 

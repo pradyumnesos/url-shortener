@@ -66,7 +66,7 @@
     <div>
     <h1>URL Shortener</h1>
     <% if(locals.id){ %>
-    <p>URL Generated: http://localhost:8000/url/<%= locals.id %></p>
+    <p>URL Generated: <%= `${locals.protocol}://${locals.host}:${locals.port}` %>/url/<%= locals.id %></p>
     <% } %>     
     <form method="post" action="/url">
         <label>Enter your url:</label>
@@ -75,8 +75,8 @@
         <button type="submit">Submit</button>
     </form>
     <br>
-    <button><a href="http://localhost:8000/">Home</a></button>
     </div>
+    <button><a href="<%= `${locals.protocol}://${locals.host}:${locals.port}/` %>">Home</a></button>
     <br>
     <% if(locals.urls){ %>
     <div>
@@ -91,7 +91,7 @@
                 <% urls.forEach((url,idx,arr)=>{ %>
                     <tr>
                         <td><%= idx+1 %> .</td>
-                        <td>http://localhost:8000/url/<%= url.shortId %></td>
+                        <td><%= `${locals.protocol}://${locals.host}:${locals.port}` %>/url/<%= url.shortId %></td>
                         <td><%= url.redirectURL %></td>
                         <td><%= url.visitHistory.length %></td>
                     </tr>
