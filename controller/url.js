@@ -41,4 +41,14 @@ async function handleRedirects(req,res){
   });
   res.redirect(entry.redirectURL);
 }
-module.exports = {handleGenerateNewShortURL,handleGetAnalytics,handleRedirects}
+async function handleStaticRoute(req,res){
+  const protocol = req.protocol;
+  const host = req.hostname;
+  const Url = req.originalUrl;
+  const port = process.env.PORT;
+  const urls = await URL.find({});
+  res.render('home',{
+    urls,protocol,host,port
+   })
+}
+module.exports = {handleGenerateNewShortURL,handleGetAnalytics,handleRedirects,handleStaticRoute}

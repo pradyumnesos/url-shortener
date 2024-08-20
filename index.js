@@ -4,7 +4,6 @@ const path = require("path");
 const { connectToMongoDB } = require("./connect")
 const urlRoute = require("./routes/url");
 const URL = require("./models/url");
-const staticRoute = require("./routes/staticRoute")
 const app = express();
 app.set('trust proxy', true);
 app.use(express.json());
@@ -15,7 +14,6 @@ const PORT = process.env.PORT || 8000;
 
 connectToMongoDB(process.env.MONGO_URL).then(()=>console.log("Mongodb connected"));
 
-app.use("/url",urlRoute);
-app.use("/",staticRoute);
+app.use("/",urlRoute);
 
 app.listen(PORT,()=>console.log(`Server on port ${PORT}`));
