@@ -6,6 +6,7 @@ const urlRoute = require("./routes/url");
 const URL = require("./models/url");
 const staticRoute = require("./routes/staticRoute")
 const app = express();
+app.set('trust proxy', true);
 app.use(express.json());
 app.use(express.urlencoded({extended:false}))
 app.set("view engine","ejs")
