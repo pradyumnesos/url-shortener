@@ -56,7 +56,7 @@
             padding:4px;
             margin-left: 4px;
         }
-        a{
+        button a{
             color: #FFFFFF;
             text-decoration: none;
         }
@@ -91,7 +91,7 @@
                 <% urls.forEach((url,idx,arr)=>{ %>
                     <tr>
                         <td><%= idx+1 %> .</td>
-                        <td><%= `${locals.protocol}://${locals.host}` %>/<%= url.shortId %></td>
+                        <td><a href="<%= `${locals.protocol}://${locals.host}` %>/<%= url.shortId %>"><%= `${locals.protocol}://${locals.host}` %>/<%= url.shortId %></a></td>
                         <td><%= url.redirectURL %></td>
                         <td><%= url.visitHistory.length %></td>
                     </tr>
